@@ -1,0 +1,424 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+select,
+input,
+option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+
+}
+
+
+/******************   NAVIGATION   ********************/
+
+.main-nav {
+    height: 77px;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+
+}
+
+
+.logo-container {
+    
+    
+    
+}
+
+
+.humdah-logo {
+    display: inline-block;
+    height: 100%;
+    margin-left: 100px;
+    margin-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  
+}
+
+
+.logo-name {
+    font-size: 26px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.right-nav {
+    
+    float: right;
+
+    
+    
+}
+
+.site-description {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 50px;
+}
+
+
+
+/******************   MAIN CONTENT SECTION   ********************/
+
+
+
+.main-content {
+    margin-top: 5%;
+/*    border: 1px solid red;*/
+    
+}
+
+.jumbo-description {
+    width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.jumbo-heading {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.jumbo-content {
+    font-size: 22px;
+    text-align: center;
+    color: #777;
+}
+
+.jumbo-btn {
+    width: 250px;
+    height: 60px;
+    border: 1px none #4cae4c;
+    border-radius: 6px;
+    background-color: #f0ad4e;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none solid rgba(255, 255, 255, 0.84);
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.hdma-disclosure {
+    margin-bottom: 300px;
+    margin-top: 5px;
+    height: 14px;
+    font-size: 10px;
+    color: #484848;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+/**************************************     INSIGHTS SECTIONS      **************************************/
+
+main {
+    display: none;
+}
+
+
+
+.hmda-banner-img {
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+
+}
+
+.hmda-filter-container {
+    /* border: 1px solid red; */
+}
+
+/*Why does this container go the full width of the browswer but display to the right of the filter container?*/
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.filter-box {
+    background-color: #fff;
+    background-size: cover;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    padding: 20px 15px;
+}
+
+.loan-min {
+    font-size: 14px;
+}
+
+.hmda-content {
+    margin-top: 25px;
+}
+
+fieldset input[type="checkbox"] {
+    display: none;
+}
+
+fieldset {
+    border: none;
+}
+
+/*FORM CHECKBOX CUSTOM CSS FOR YEARS OF DATA TOGGLE BUTTONS*/
+
+label.hmda-year-label,
+label.hmda-purpose {
+    font-size: 10px;
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    text-align: center;
+    display: block;
+/*    border: 1px solid red;*/
+
+}
+
+label.hmda-year-label:hover,
+label.hmda-purpose:hover {
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+:checked + label.hmda-year-label {
+    background-color: #4cae4c;
+    color: #fff;
+}
+
+:checked + label.hmda-purpose {
+    background-color: #4cae4c;
+    color: #fff;
+}
+
+
+/*STATE SELECT LIST*/
+
+select {
+    font-size: 12px;
+    padding: 5px 10px;
+    background: url('https://static.thenounproject.com/png/551749-200.png') no-repeat 97% 50% #f2f2f2;
+    background-size: 15px 15px;
+}
+
+.selected-state,
+.selected-county {
+    position: relative;
+}
+
+
+
+/* LOAN RANGE INPUTS*/
+
+input[type="number"] {
+    font-size: 14px;
+    background-color: #f2f2f2;
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+
+
+
+
+
+/********************* FILTER BUTTON  ************************/
+
+.filter-btn {
+    width: 100%;
+    margin-top: 15px;
+    height: 50px;
+    border: 1px none #4cae4c;
+    border-radius: 10px;
+    background-color: #f0ad4e;
+    background-repeat: no-repeat;
+    font-size: 22px;
+    color: #ffffff;
+    text-decoration: none solid rgba(255, 255, 255, 0.84);
+    text-align: center;
+}
+
+
+/********************* RESULTS SECTION  ************************/
+
+.hmda-data-container {
+/*    border: 1px solid pink;*/
+}
+
+
+.hmda-kpi-metrics {
+/*    border: 1px solid green;*/
+    margin-top: 10px;
+}
+
+
+/*
+
+
+
+/********* CARD KPIS **************/
+
+.card {
+    background-color: #f2f2f2;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+.card-title {
+    font-size: 14px;
+    color: #a4abbf;
+    font-weight: 700;
+    text-decoration: none solid rgb(164, 171, 191);
+    margin: 15px;
+}
+
+
+.card-kpi {
+/*    background-color: #fff;*/
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    
+}
+
+
+.main-kpi, .sub-kpi {
+/*    border: 1px solid red;*/
+    color: #484848;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.main-kpi-value, .sub-kpi-value {
+    font-size: 26px;
+    color: #484848;
+    font-weight: 700;
+    text-decoration: none solid rgb(0, 0, 0);
+}
+
+.sub-kpi-title {
+    font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.sub-kpi-value {
+    font-size: 22px;
+}
+
+
+.sub-kpis {
+    margin-top: 10px;
+ 
+/*    border: 1px solid purple;*/
+
+
+}
+
+
+.kpi-loan-purpose {
+
+    margin-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+
+}
+
+.kpi-purpose {
+    padding-bottom: 5px;
+}
+
+.kpi-purpose p {
+    font-size: 10px;
+    color: #999;
+}
+
+.kpi-purpose span {
+    color: green;
+   
+}
+
+
+
+.hmda-kpi-chart {
+/*    border: 1px solid red;*/
+    height: 400px;
+    background-color: #f2f2f2;
+    margin-top: 15px;
+}
+
+
+/*********** RESPONSIVENESS ***********************/
+
+
+
+@media only screen and (max-width: 1550px) {
+    
+    fieldset div.col-4, fieldset div.col-6 {
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .col-2 {
+        width: 50%;
+    }
+
+    
+}
+
+@media only screen and (max-width: 900px) {
+    
+    .card {
+        width: 100%;
+        margin-top: 15px;
+  
+    }
+
+
+    
+}
+
+@media only screen and (max-width: 500px) {
+    
+    .card {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+}
+
+
+
+/******************     FOOTER *********************/
+
+footer {
+    margin-top: 300px;
+    height: 300px;
+    background-color: #484848;
+    color: #ccc;
+    text-align: center;
+}
+
+
+footer p {
+    padding-top: 50px;
+}
