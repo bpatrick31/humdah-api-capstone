@@ -1,21 +1,15 @@
 //QUESTIONS
 
-//1. Need to allow the form inputs to be required, but the form element needs to be novalidate
+
 //2. Need to get the state request to be the first thing the user does, if they want to search a new state they have to start the process over
 //3. Need to finish the total hicharts example
-//4. How should i store the values once the array is already filtered?
-
-
-
-
-
 
 //Application State Variables
 
 var mortgageData = {};
-let filteredArray = [];
-let years = [];
-let loanPurpose = [];
+let filteredArray = []; //if blank, need to add more data
+let years = []; //if blank add years of data
+let loanPurpose = []; 
 // let actionTaken = [];
 
 ////************************************************************************/
@@ -59,6 +53,23 @@ $("#hmda_form").on('submit', function(event) {
             filterResults(mortgageData, years, loanPurpose);
            
     
+});
+
+//Listen for the state selection to call the API again
+$('.state_code').change(function () {
+   
+    //Clear out the years
+        //remove the selected class
+        //clear all children with a selected class
+    //Clear out the purpose
+   
+
+
+
+
+    // var name = $(this).val();
+    // var check = $(this).attr('checked');
+    // console.log("Change: " + name + " to " + check);
 });
 
 
@@ -144,8 +155,6 @@ function loanOriginationKPI(array) {
             }, 0);
 
             console.log('Loan Origination Value = ', (((loanOriginationValue * 1000) / 1000000000)).toFixed(1));
-
-
 
     //GET THE LOAN COUNT
     var loanOriginationCount = array

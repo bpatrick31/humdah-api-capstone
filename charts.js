@@ -7,7 +7,7 @@ Highcharts.chart({
         
     },
     title: {
-        text: 'Total Loans Originated by Year'
+        text: '5 Year Loan Trend by State'
     },
     legend: {
         layout: 'vertical',
