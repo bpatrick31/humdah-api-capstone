@@ -197,92 +197,10 @@
                         </div>
                     </div>
                 </fieldset>
+           
+    
 
-               
-
-
-                <!--ACTION TAKEN -->
-                <!-- <fieldset class="filter-box form-input row" id="action_taken" name="actionTaken">
-                    <div class="filter-title col-12">Action Taken</div>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="Loan originated" name="actionTaken" id="originated" >
-                            <label class="hmda-purpose" for="originated">Originated</label>
-                        </div>
-
-
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="Application denied by financial institution" name="actionTaken" id="denied" >
-                            <label class="hmda-purpose" for="denied">Denied</label>
-                        </div>
-
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="File closed for incompleteness" name="actionTaken" id="incomplete" >
-                            <label class="hmda-purpose" for="incomplete">Incomplete</label>
-                        </div>
-
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="Approved but not accepted" name="actionTaken" id="approved_not_accepted" >
-                            <label class="hmda-purpose" for="approved_not_accepted">Approved Not Accepted</label>
-                        </div>
-
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="Loan purchased by the institution" name="actionTaken" id="purchased_by_bank" >
-                            <label class="hmda-purpose" for="purchased_by_bank">Purchased By Bank</label>
-                        </div>
-
-
-                    </div>
-                </fieldset> -->
-
-
-                <!--LOAN RANGE -->
-                <!-- <fieldset class="filter-box form-input row" id="loan_amount">
-                    <div class="filter-title col-12">Loan Amount</div>
-                    
-                    <div class="row">
-                    
-                        <div class="col-6 loan-min">
-                            <label for="loan_min">min</label>
-                            <input type="number" id="loan_min" name="loan_amount" placeholder="$100,000" step="10000">
-                        </div>
-
-                        <div class="col-6 loan-min">
-                            <label for="loan_min">max</label>
-                            <input type="number" id="loan_min" name="loan_amount" placeholder="$250,000" step="10000">
-                        </div>
-                        
-                    </div>
-
-                </fieldset> -->
-
-                <!--APPLICANTS INCOME -->
-                <!-- <fieldset class="filter-box form-input row" id="loan_amount">
-                    <div class="filter-title col-12">Applicants Income</div>
-
-                    
-                    <div class="row">
-                        
-                        <div class="col-6 loan-min">
-                            <label for="applicant_income">min</label>
-                            <input type="number" id="applicant_income" name="applicant_income" placeholder="$50,000" step="10000">
-                        </div>
-                        
-                        <div class="col-6 loan-min">
-                            <label for="loan_min">max</label>
-                            <input type="number" id="loan_min" name="loan_amount" placeholder="$150,000" step="10000">
-                        </div>
-                        
-                    </div>
-
-                </fieldset> -->
-
-
-
-
-
-                <button role="submit" type="submit" class="filter-btn">Filter Results</button>
+                <button role="submit" type="submit" class="filter-btn">Update </button>
 
             </form>
 
@@ -306,23 +224,7 @@
                         <div class="main-kpi col-12">
                             <div class="main-kpi-value" id="originated_value">$33.5M</div>
                             <div class="main-kpi-title">Loan Origination Value</div>
-                            
-
-                                <!-- <div class="kpi-loan-purpose row">
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Purchase: <span class="purpose-value">$1.3M</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Improvements: <span class="purpose-value">$55k</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Refinance: <span class="purpose-value">800k</span></p>
-                                    </div>
-                                </div> -->
-                            
+                                                    
                         </div>
                     </div>
 
@@ -396,25 +298,9 @@
 
                     <div class="card-kpi row">
                         <div class="main-kpi col-12">
-                            <div class="main-kpi-value">$33.5M</div>
+                            <div class="main-kpi-value" id="denied_value">$33.5M</div>
                             <div class="main-kpi-title">Value of Loans Denied</div>
-                            
-
-                                <!-- <div class="kpi-loan-purpose row">
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Purchase: <span class="purpose-value">$1.3M</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Improvements: <span class="purpose-value">$55k</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Refinance: <span class="purpose-value">800k</span></p>
-                                    </div>
-                                </div> -->
-                            
+                                                       
                         </div>
                     </div>
 
@@ -423,26 +309,10 @@
                         <div class="sub-kpis col-6">
                             <div class="kpi-title">
 
-
                                 <div class="sub-kpi">
-                                    <div class="sub-kpi-value">3.8M</div>
+                                    <div class="sub-kpi-value" id="denied_count">3.8M</div>
                                     <div class="sub-kpi-title"># of Loans Denied</div>
                                     <div class="sub-kpi-types">
-
-                                        <!-- <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
 
@@ -455,25 +325,9 @@
 
 
                                 <div class="sub-kpi">
-                                    <div class="sub-kpi-value">$1.2M</div>
-                                    <div class="sub-kpi-title">Approved But Not Accepted</div>
-                                    <!-- <div class="sub-kpi-types">
-
-                                        <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                    <div class="sub-kpi-value" id="loan_withdrawn">$1.2M</div>
+                                    <div class="sub-kpi-title">Applicant Withdrew</div>
+                                
                                 </div>
 
                             </div>
@@ -489,22 +343,8 @@
                     <div class="card-kpi row">
                         <div class="main-kpi col-12">
                             <div class="main-kpi-value">55%</div>
-                            <div class="main-kpi-title">% of Loans Denied</div>
+                            <div class="main-kpi-title">Percent Denied</div>
                             
-
-                                <!-- <div class="kpi-loan-purpose row">
-                                    <div class="kpi-purpose col-4">
-                                        <p>Purchase: <span class="purpose-value">$1.3M</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Improvements: <span class="purpose-value">$55k</span></p>
-                                    </div>
-
-                                    <div class="kpi-purpose col-4">
-                                        <p>Refinance: <span class="purpose-value">800k</span></p>
-                                    </div>
-                                </div> -->
                             
                         </div>
                     </div>
@@ -520,20 +360,7 @@
                                     <div class="sub-kpi-title">Withdrawn</div>
                                     <div class="sub-kpi-types">
 
-                                        <!-- <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div> -->
+                                        
                                     </div>
                                 </div>
 
@@ -550,20 +377,7 @@
                                     <div class="sub-kpi-title">Purchase vs Refinance</div>
                                     <div class="sub-kpi-types">
 
-                                        <!-- <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div> -->
+                                        
                                     </div>
                                 </div>
 
