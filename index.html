@@ -27,6 +27,10 @@
         </div>
 
     </nav>
+    <!-- Banner  -->
+        <div class="hmda-banner">
+            <img class="hmda-banner-img" src="images/image-70d441.png">
+        </div>
 
     <main class="main-content row" role="main">
 
@@ -34,20 +38,21 @@
             HMDA Mortgage Insights
         </h1>
         <div class="jumbo-content">
-            <p class="jumbo-description">The HDMA, aka "HUMDAH" requires many financial institutions to maintain, report, and publicly disclose loan-level information about mortgages. Use our analyzer to gain deep insights and mortgage trends in your state or county.</p>
+            <p class="jumbo-description">The HMDA, aka "HUMDAH" requires many financial institutions to maintain, report, and publicly disclose loan-level information about mortgages. Use our analyzer to gain deep insights and mortgage trends in your state.</p>
             <button class="jumbo-btn" role="button" id="home-page-btn">Discover</button>
             <p class="hdma-disclosure">Learn more about the CFPB and the HDMA</p>
         </div>
 
     </main>
 
-    <!-- INSIGHTS SECTION   -->
+ 
 
+    <!-- INSIGHTS SECTION   -->
+  
     <section class="insights-container row" id="humdah-insights">
-        <!-- Banner  -->
-        <div class="hmda-banner">
-            <img class="hmda-banner-img" src="images/image-70d441.png">
-        </div>
+        
+
+       
         <!--HDMA Filter Container-->
         <!-- FORM SUBMISSION FOR FILTERS-->
         <div class="col-3">
@@ -163,14 +168,9 @@
                         </div>
 
                         <div class="col-2">
-                            <input class="hmda-year" type="checkbox" value="2017" name="yearsOfData" id="year2017" required>
+                            <input class="hmda-year" type="checkbox" value="2017" name="yearsOfData" id="year2017" required checked>
                             <label class="hmda-year-label" for="year2017">2017</label>
                         </div>
-
-                        <!-- <div class="col-2">
-                            <input class="hmda-year" type="checkbox" value="2018" name="yearsOfData" id="year2018" required>
-                            <label class="hmda-year-label" for="year2018">2018</label>
-                        </div> -->
                     </div>
 
                 </fieldset>
@@ -181,7 +181,7 @@
 
                     <div class="row">
                         <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="1" name="loanPurpose" id="home_purchase" >
+                            <input class="hmda-purpose" type="checkbox" value="1" name="loanPurpose" id="home_purchase" checked>
                             <label class="hmda-purpose" for="home_purchase">Purchase</label>
                         </div>
 
@@ -212,6 +212,16 @@
 
 
             **************************************-->
+            <div class="spinner-title">
+            </div>
+            
+            <div class="spinner">
+                    <div class="item item-1"></div>
+                    <div class="item item-2"></div>
+                    <div class="item item-3"></div>
+                    <div class="item item-4"></div>
+                    
+            </div>
 
         <div class="hmda-data-container col-9">
 
@@ -239,20 +249,6 @@
                                     <div class="sub-kpi-title"># of Loans Originated</div>
                                     <div class="sub-kpi-types">
 
-                                        <!-- <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
 
@@ -268,21 +264,6 @@
                                     <div class="sub-kpi-value" id="avg_loan_value">$225k</div>
                                     <div class="sub-kpi-title">Avg Loan Value</div>
                                     <div class="sub-kpi-types">
-
-                                        <!-- <div class="kpi-loan-purpose row">
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>P: <span class="purpose-value">$1.3M</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>I: <span class="purpose-value">$55k</span></p>
-                                            </div>
-
-                                            <div class="kpi-purpose col-4">
-                                                <p>R: <span class="purpose-value">800k</span></p>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
 
@@ -342,7 +323,7 @@
 
                     <div class="card-kpi row">
                         <div class="main-kpi col-12">
-                            <div class="main-kpi-value">55%</div>
+                            <div class="main-kpi-value" id="percent_denied">55%</div>
                             <div class="main-kpi-title">Percent Denied</div>
                             
                             
@@ -356,12 +337,9 @@
 
 
                                 <div class="sub-kpi">
-                                    <div class="sub-kpi-value">$225k</div>
-                                    <div class="sub-kpi-title">Withdrawn</div>
-                                    <div class="sub-kpi-types">
-
-                                        
-                                    </div>
+                                    <div class="sub-kpi-value" id="loan_growth">22%</div>
+                                    <div class="sub-kpi-title">5 Year Purchase Growth</div>
+                                   
                                 </div>
 
                             </div>
@@ -373,12 +351,9 @@
 
 
                                 <div class="sub-kpi">
-                                    <div class="sub-kpi-value">532k</div>
-                                    <div class="sub-kpi-title">Purchase vs Refinance</div>
-                                    <div class="sub-kpi-types">
-
-                                        
-                                    </div>
+                                    <div class="sub-kpi-value" id="purchase_percent">54%</div>
+                                    <div class="sub-kpi-title">Purchase Loans vs Others</div>
+                              
                                 </div>
 
                             </div>
@@ -414,6 +389,6 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="/charts.js"></script>
+    <script src="charts.js"></script>
 
 </body>

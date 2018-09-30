@@ -1,73 +1,13 @@
+//Need to add the enter event listener
+//Need the home button to be clickable to refresh the page
+//Need to clear the checked value from the loan purpose once the state changes
+
 //Application State Variables
-
-var mortgageData = {};
-let filteredArray = []; //if blank, need to add more data
-let years = []; //if blank add years of data
-let loanPurpose = [];
-let state = ""; 
-
 
 ////************************************************************************************************************/
 
 //Step 1: Get the users inputs
-$("#hmda_form").on('submit', function(event) {
 
-            event.preventDefault();
-
-            years = [];
-            loanPurpose = [];
-            // actionTaken = [];
-
-            //get State
-            state = $("#state_list option:selected").val();
-           
-            
-            //get Years of Data
-            $("input[name='yearsOfData']:checked").each(function(){
-                years.push($(this).val());
-            })      
-            
-            //get Loan Purpose
-            $("input[name='loanPurpose']:checked").each(function(){
-                loanPurpose.push($(this).val());
-            })  
-
-             //get Action Taken
-            //  $("input[name='actionTaken']:checked").each(function(){
-            //     actionTaken.push($(this).val());
-            // })  
-                      
-
-            console.log('Selected state = ', state);
-            console.log('Years of data = ', years);
-            console.log('Loan purpose = ', loanPurpose);
-            // console.log('Action taken = ', actionTaken);
-            
-            filterResults(mortgageData, years, loanPurpose);
-
-            getNewStateData(state);
-           
-    
-});
-
-//Listen for the state selection to call the API again
-$('.state_code').change(function (state) {
-
-    $("input[name='yearsOfData']:checked").removeAttr('checked');
-    $("input[name='loanPurpose']:checked").removeAttr('checked');
-   
-    var name = $(this).val();
-    var check = $(this).attr('selected');
-
-    getNewStateData(state);
-    
-    console.log("Change: ", name, check);
-
-
-});
-
-
-/****************************     STEP 2: Make the request     ******************************* */
 $( document ).ready(function(data) {
 
     let query = { 
@@ -82,8 +22,6 @@ $( document ).ready(function(data) {
         '$callback': '' //Javascript callback to invoke. Only useful with JSONP requests
     
         };
-
-
     //get the result of the API
      $.ajax({
         
@@ -97,9 +35,13 @@ $( document ).ready(function(data) {
   
     .done(function(hmda){
         //update and display search results if response is successful
-        console.log(hmda);
-        mortgageData = hmda;
-        
+        hmdaChartData(hmda);
+        loanOriginationKPI(hmda.results);
+        loansDeniedKPI (hmda.results);
+        filterResults(hmda, ['2017'], ['1']);
+
+        //update the chart
+    
     })
 
     //handle any errors that occur
@@ -109,12 +51,63 @@ $( document ).ready(function(data) {
         console.log(errorThrown); //server errors
     })
 
+});
 
+
+$("#home-page-btn").on('click', function(event) {
+    $('main').hide();
+    $('section').show();
+});  
+
+
+$('.state_code').change(function () {
+
+    $("input[name='yearsOfData']:checked").removeAttr('checked');
+    $("input[name='loanPurpose']:checked").removeAttr('checked');
+
+    $("#year2017, #home_purchase").prop('checked', true);
+   
+    var name = $(this).val();
+
+    getNewStateData(name, ['2017'], ['1']);
 
 });
 
 
-function getNewStateData(state) {
+
+$("#hmda_form").on('submit', function(event) {
+
+            event.preventDefault();
+
+            let years = [];
+            let loanPurpose = [];
+            // actionTaken = [];
+
+            //get State
+            let state = $("#state_list option:selected").val();
+           
+            
+            //get Years of Data
+            $("input[name='yearsOfData']:checked").each(function(){
+                years.push($(this).val());
+            })      
+            
+            //get Loan Purpose
+            $("input[name='loanPurpose']:checked").each(function(){
+                loanPurpose.push($(this).val());
+            })  
+
+            getNewStateData(state, years, loanPurpose);
+           
+            
+    
+});
+
+
+/****************************     STEP 2: Make the request     ******************************* */
+
+
+function getNewStateData(state, years, loanPurpose) {
 
         let where = 'state_abbr =' + '"' + state + '"';
 
@@ -148,8 +141,22 @@ function getNewStateData(state) {
         .done(function(hmda){
             //update and display search results if response is successful
             console.log(hmda);
-            mortgageData = hmda;
-            
+
+            if (hmda.results === null || hmda.results.length === 0) {
+                $('.hmda-data-container').hide();
+                $(".spinner").show()
+                $(".spinner-title").show().html(`<h2>The HMDA database is calculating data for ${state}</h2><p>Try a different state or click update and see if your response has loaded!</p>`)
+
+            } else {
+                $(".spinner").hide();
+                $(".spinner-title").hide();
+                filterResults(hmda, years, loanPurpose);
+                console.log('Mortgage data on submit = ', hmda);
+                $('.hmda-data-container').show();
+
+                //Get loan data by year
+                hmdaChartData(hmda)
+            }
         })
     
         //handle any errors that occur
@@ -162,23 +169,179 @@ function getNewStateData(state) {
 }
 
 
+//UPDATE THE HDMA CHART DATA BASED ON THE STATE RESPONSE
+
+function hmdaChartData(data) {
+
+    let purchase = {
+        '2012': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2012 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2013': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2013 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        
+        '2014': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2014 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(2),
+        
+        '2015': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2015 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+        
+        '2016': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2016 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2017': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2017 && items.loan_purpose === 1);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0)*(1000/1000000000)
+
+    }
 
 
+
+    let refinance = {
+        '2012': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2012 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2013': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2013 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        
+        '2014': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2014 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(2),
+        
+        '2015': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2015 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+        
+        '2016': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2016 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2017': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2017 && items.loan_purpose === 3);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0)*(1000/1000000000)
+    
+
+            }
+
+
+    
+    let improvement = {
+        '2012': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2012 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2013': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2013 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        
+        '2014': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2014 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(2),
+        
+        '2015': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2015 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+        
+        '2016': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2016 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0) * 1000 / (1000000000).toFixed(1),
+
+        '2017': data.results.filter((items) => {
+            return (items.action_taken_name === "Loan originated" && items.as_of_year === 2017 && items.loan_purpose === 2);
+        })
+        .reduce(function(prev, cur){
+                return prev + cur.sum_loan_amount_000s;
+                }, 0)*(1000/1000000000)
+    
+
+        }
+        
+    chart(purchase, refinance, improvement);
+    loanGrowthKPI (purchase);
+
+}
+
+
+// FILTER THE FORM SUBMISSION AND RETURN A REDUCED VALUE
 
 function filterResults(mortgageData, years, loanPurpose) {
 
-    //1. Filter array results based on the selected filters (years, purpose, state, action taken)
+  
+    let filteredArray = mortgageData.results.filter((item) => {
+        
+        let filteredYears = years.includes(item.as_of_year.toString());
+        let filteredPurpose = loanPurpose.includes(item.loan_purpose.toString());      
+        return (filteredPurpose && filteredYears);
 
-    var filteredArray = mortgageData.results
-    
-    .filter((item) => {
-        return (years.includes(item.as_of_year.toString())) &&
-               (loanPurpose.includes(item.loan_purpose.toString())) 
+
     });
           console.log('Filtered array = ', filteredArray); 
 
-          loanOriginationKPI(filteredArray)
+          loanOriginationKPI(filteredArray);
           loansDeniedKPI(filteredArray);
+          percentDeniedKPI(filteredArray);
+          purchasePercentKPI(filteredArray);
           
           
 }
@@ -189,34 +352,32 @@ function filterResults(mortgageData, years, loanPurpose) {
 function loanOriginationKPI(array) {
     
     //Get the loan Value
-    var loanOriginationValue = array
-    .filter((items) => {
+    var loanOriginationValue = array.filter((items) => {
         return items.action_taken_name === "Loan originated";
     })
     .reduce(function(prev, cur){
             return prev + cur.sum_loan_amount_000s;
             }, 0);
-            console.log('Loan Origination Value = ', (((loanOriginationValue * 1000) / 1000000000)).toFixed(1));
+            
 
     //Get the loan count
-    var loanOriginationCount = array
-
-    .filter((items) => {
+    var loanOriginationCount = array.filter((items) => {
         return items.action_taken_name === "Loan originated";
     })
     .reduce(function(prev, cur){
 
             return prev + cur.count_action_taken_name;
             }, 0);
-            console.log('Loan Origination Count = ', (((loanOriginationCount) / 1000)).toFixed(1));
+         
     
 
     //Get the average loan value 
     var averageLoanValue = Math.round((
         (loanOriginationValue * 1000) / loanOriginationCount)/1000).toFixed(1);
-        console.log('Average Loan Value = ', averageLoanValue)
-
+     
     updateOriginationKPIs(loanOriginationValue, loanOriginationCount, averageLoanValue);
+
+   
 
 }
 
@@ -234,7 +395,7 @@ function loansDeniedKPI (array) {
     .reduce(function(prev, cur){
             return prev + cur.sum_loan_amount_000s;       
             }, 0);
-    console.log('Loan Denied Value = ', (((loanDeniedValue * 1000) / 1000000000)).toFixed(1));
+   
 
 
     var loanDeniedCount = array
@@ -244,8 +405,7 @@ function loansDeniedKPI (array) {
     .reduce(function(prev, cur){
             return prev + cur.count_action_taken_name;
             }, 0);
-            console.log('Loan Origination Count = ', (((loanDeniedCount) / 1000)).toFixed(1));
-
+       
 
     var loanWithdrawn = array
     .filter((items) => {
@@ -254,15 +414,89 @@ function loansDeniedKPI (array) {
     .reduce(function(prev, cur){
         return prev + cur.sum_loan_amount_000s; 
         }, 0);
-    console.log('Value Withdrawn = ', (((loanWithdrawn * 1000) / 1000000000)).toFixed(1));
-
+   
 
     updateDeniedKPIs(loanDeniedValue, loanDeniedCount, loanWithdrawn);
+   
 
 }
 
 
+//*******************LOANS DENIED KPI ************************ */
 
+function percentDeniedKPI (array) {
+
+    
+    //Percent Denied KPI
+    
+    let originated = array.filter((items) => {
+        return items.action_taken_name === "Loan originated";
+    })
+    .reduce(function(prev, cur){
+            return prev + cur.sum_loan_amount_000s;
+            }, 0);
+           
+
+    let denied = array
+    .filter((items) => {
+        return items.action_taken_name === "Preapproval request denied by financial institution", "File closed for incompleteness";
+    })
+    .reduce(function(prev, cur){
+            return prev + cur.sum_loan_amount_000s;       
+            }, 0);
+    
+    
+    let percentDenied = ((denied / (originated + denied)) * 100).toFixed(1);
+       
+
+    $('#percent_denied').text((percentDenied) + '%');
+
+}
+
+
+//*******************LOAN GROWTH KPI ************************ */
+
+function loanGrowthKPI (purchase) {
+
+    let growth = ((((purchase["2017"] - purchase["2012"]) / purchase["2012"])*100)).toFixed(1);
+
+    $('#loan_growth').text((growth) + '%');
+}
+
+
+//******************* Percent of Purchase Loans ************************ */
+
+function purchasePercentKPI (array) {
+
+    let purchase = array.filter((items) => {
+        return items.action_taken_name === "Loan originated" && items.loan_purpose === 1;
+    })
+    .reduce(function(prev, cur){
+            return prev + cur.sum_loan_amount_000s;
+            }, 0);
+
+    let refinance = array.filter((items) => {
+        return items.action_taken_name === "Loan originated" && items.loan_purpose === 3;
+    })
+    .reduce(function(prev, cur){
+            return prev + cur.sum_loan_amount_000s;
+            }, 0);
+    
+    let improvement = array.filter((items) => {
+        return items.action_taken_name === "Loan originated" && items.loan_purpose === 2;
+    })
+    .reduce(function(prev, cur){
+            return prev + cur.sum_loan_amount_000s;
+            }, 0);
+    
+    
+    let purchasePercent = ((purchase / (purchase + refinance + improvement)) * 100).toFixed(1);
+        
+            
+
+    $('#purchase_percent').text((purchasePercent) + '%');
+
+}
 
 
 //3. Update the User Interface
@@ -289,12 +523,11 @@ function updateDeniedKPIs (value, count, withdrawn) {
 
 
 
-
-
 // ********************************** HICHARTS DATA ******************************* 
 
+function chart (purchase, refinance, improvement) { 
 
-$(function () { 
+   
 
     Highcharts.chart({
         chart: {
@@ -303,14 +536,14 @@ $(function () {
             
         },
         title: {
-            text: '5 Year Loan Trend by State ($)'
+            text: '5 Year Loan Trend by State ($Billions)'
         },
         legend: {
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
             x: 150,
-            y: 100,
+            y: 50,
             floating: true,
             borderWidth: 1,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
@@ -318,6 +551,7 @@ $(function () {
         xAxis: {
             categories: [
                 '2012',
+                '2013',
                 '2014',
                 '2015',
                 '2016',
@@ -333,12 +567,12 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: 'Amount'
+                text: 'Amount in Billions'
             }
         },
         tooltip: {
             shared: true,
-            valueSuffix: ' million'
+            valueSuffix: ' billion'
         },
         credits: {
             enabled: false
@@ -348,16 +582,23 @@ $(function () {
                 fillOpacity: 0.5
             }
         },
-        series: [{
-            name: 'Approved',
-            data: [11, 27, 31, 22, 30]
+        series: [
+            {
+            name: 'Purchase',
+            data: [purchase["2012"], purchase["2013"], purchase["2014"], purchase["2015"], purchase["2016"], purchase["2017"]]
         }, {
-            name: 'Denied',
-            data: [14, 22, 33, 45, 36]
-        }]
+            name: 'Refinance',
+            data: [refinance["2012"], refinance["2013"], refinance["2014"], refinance["2015"], refinance["2016"], refinance["2017"]]
+        },
+        {
+            name: 'Improvement',
+            data: [improvement["2012"], improvement["2013"], improvement["2014"], improvement["2015"], improvement["2016"], improvement["2017"]]
+        }
+        
+    ]
     })
     
-    });
+    };
 
 
 
