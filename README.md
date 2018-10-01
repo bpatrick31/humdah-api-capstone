@@ -10,7 +10,7 @@ The HMDA, aka "HUMDAH" requires many financial institutions to maintain, report,
 This application will allow you to select the state of your choice, and then we will analyze the number of loans that were originated or denied from 2012 - 2017. Draw upon these insights to see trends on loan processing volume in your state.
 
 ## How to use it
-Once you are on the insights page (shown in the second screenshot) select the state you'd like to analyze. We will send that request to the CFPB and then summarize the information based on the filters you select. You can filter for different insights by analyzing specific years or the type of loan like (home purchase, a refefinance, or a loan for improvements). Hit update and you will have your returned values!
+Once you are on the insights page (shown in the second screenshot) select the state you'd like to analyze. We will send that request to the CFPB and then summarize the information based on the filters you select. You can filter for different insights by analyzing specific years or the type of loan like (home purchase, a refefinance, or a loan for improvements). Hit update and you will have your returned values! On the chart information below, you can filter for the specific loan types by clicking on the legend. Give it a try!
 
 ## Screen Shots
 ![screen shot 2018-09-30 at 5 32 57 pm](https://user-images.githubusercontent.com/19401140/46265074-3ff80900-c4d8-11e8-9a6b-8f116ed753bb.png)
