@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
- 
+
 }
 
 select,
@@ -10,7 +10,10 @@ option {
     -moz-appearance: none;
     appearance: none;
     border: 0;
+}
 
+a {
+    text-decoration: none;
 }
 
 
@@ -20,10 +23,7 @@ option {
     height: 77px;
     background-color: #fff;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-
 }
-
-
 
 .humdah-logo {
     display: inline-block;
@@ -32,9 +32,7 @@ option {
     margin-right: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
-  
 }
-
 
 .logo-name {
     font-size: 26px;
@@ -44,45 +42,28 @@ option {
     vertical-align: top;
     margin-top: 20px;
     color: #ccc;
-    
 }
-
-
-a {
-     text-decoration: none;
-}
-
-
-
-
-
 
 .right-nav {
-    
     float: right;
-
-    
-    
 }
+
 
 .site-description {
     display: inline-block;
     margin-top: 20px;
     font-size: 18px;
     font-weight: 600;
-    margin-right: 50px;
+    padding: 10px;
+    text-align: center;
 }
 
 
 
 /******************   MAIN CONTENT SECTION   ********************/
 
-
-
 .main-content {
     margin-top: 5%;
-/*    border: 1px solid red;*/
-    
 }
 
 .jumbo-description {
@@ -91,12 +72,10 @@ a {
     margin-right: auto;
 }
 
-
 .jumbo-heading {
     font-size: 36px;
     text-align: center;
     margin-bottom: 20px;
-
 }
 
 .jumbo-content {
@@ -105,7 +84,7 @@ a {
     color: #777;
 }
 
-.jumbo-btn {
+.jumbo-btn, .filter-btn {
     width: 250px;
     height: 60px;
     border: 1px none #4cae4c;
@@ -118,8 +97,13 @@ a {
     cursor: pointer;
 }
 
-.jumbo-btn:hover {
-    background-color: green;
+.filter-btn {
+    width: 100%;
+}
+
+
+.jumbo-btn:hover, .filter-btn:hover {
+    background-color: #0b8d4c;
 }
 
 .hdma-disclosure {
@@ -132,33 +116,22 @@ a {
     text-align: center;
 }
 
+.disclosure_link:hover {
+    color: rgba(14, 100, 170, 0.836);
+}
+
 
 /**************************************     INSIGHTS SECTIONS      **************************************/
-
-/*
-main {
-    display: none;
-}
-*/
 
 section {
     display: none;
 }
 
-
-
 .hmda-banner-img {
     width: 100%;
     height: 70px;
     margin-top: 10px;
-
 }
-
-.hmda-filter-container {
-    /* border: 1px solid red; */
-}
-
-/*Why does this container go the full width of the browswer but display to the right of the filter container?*/
 
 .filter-title {
     font-size: 18px;
@@ -203,7 +176,6 @@ label.hmda-purpose {
     margin-right: 0px;
     text-align: center;
     display: block;
-/*    border: 1px solid red;*/
 
 }
 
@@ -212,12 +184,13 @@ label.hmda-purpose:hover {
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
 }
 
-:checked + label.hmda-year-label {
+
+input[type=checkbox]:checked + label.hmda-year-label {
     background-color: #4cae4c;
     color: #fff;
 }
 
-:checked + label.hmda-purpose {
+input[type=checkbox]:checked + label.hmda-purpose {
     background-color: #4cae4c;
     color: #fff;
 }
@@ -238,7 +211,6 @@ select {
 }
 
 
-
 /* LOAN RANGE INPUTS*/
 
 input[type="number"] {
@@ -249,12 +221,9 @@ input[type="number"] {
 }
 
 
-
-
-
 /********************* FILTER BUTTON  ************************/
 
-.filter-btn {
+/* .filter-btn {
     width: 100%;
     margin-top: 15px;
     height: 50px;
@@ -266,24 +235,23 @@ input[type="number"] {
     color: #ffffff;
     text-decoration: none solid rgba(255, 255, 255, 0.84);
     text-align: center;
-}
+} */
 
 
 /********************* RESULTS SECTION  ************************/
 
 .hmda-data-container {
-/*    border: 1px solid pink;*/
+    /*    border: 1px solid pink;*/
 }
 
 
 .hmda-kpi-metrics {
-/*    border: 1px solid green;*/
+    /*    border: 1px solid green;*/
     margin-top: 10px;
 }
 
 
 /*
-
 
 
 /********* CARD KPIS **************/
@@ -308,15 +276,15 @@ input[type="number"] {
 
 
 .card-kpi {
-/*    background-color: #fff;*/
+    /*    background-color: #fff;*/
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    
 }
 
 
-.main-kpi, .sub-kpi {
-/*    border: 1px solid red;*/
+.main-kpi,
+.sub-kpi {
+    /*    border: 1px solid red;*/
     color: #484848;
     padding: 15px;
     text-align: center;
@@ -325,7 +293,8 @@ input[type="number"] {
     border-radius: 10px;
 }
 
-.main-kpi-value, .sub-kpi-value {
+.main-kpi-value,
+.sub-kpi-value {
     font-size: 26px;
     color: #484848;
     font-weight: 700;
@@ -342,22 +311,17 @@ input[type="number"] {
     font-size: 22px;
 }
 
-
 .sub-kpis {
     margin-top: 10px;
- 
-/*    border: 1px solid purple;*/
 
-
+    /*    border: 1px solid purple;*/
 }
-
 
 .kpi-loan-purpose {
 
     margin-top: 5px;
     padding-bottom: 5px;
     display: block;
-
 }
 
 .kpi-purpose {
@@ -371,19 +335,14 @@ input[type="number"] {
 
 .kpi-purpose span {
     color: green;
-   
 }
 
-
-
 .hmda-kpi-chart {
-/*    border: 1px solid red;*/
+    /*    border: 1px solid red;*/
     height: 400px;
     background-color: #f2f2f2;
     margin-top: 15px;
 }
-
-/*** OVERLAY **/
 
 /** SPINNER **/
 
@@ -405,118 +364,144 @@ input[type="number"] {
     left: 180;
     right: 100;
     margin: auto;
-  }
-  
-  .item {
+}
+
+.item {
     width: 100px;
     height: 100px;
     position: absolute;
     text-align: center;
-  }
-  
-  .item-1 {
+}
+
+.item-1 {
     background-color: #FA5667;
     top: 0;
     left: 0;
     z-index: 1;
-    animation: item-1_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
-  }
-  
-  .item-2 {
+    animation: item-1_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-2 {
     background-color: #7A45E5;
     top: 0;
     right: 0;
     z-index: 1;
-    animation: item-2_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
-  }
-  
-  .item-3 {
+    animation: item-2_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-3 {
     background-color: #1B91F7;
     bottom: 0;
     right: 0;
     z-index: 1;
-    animation: item-3_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
-  }
-  
-  .item-4 {
+    animation: item-3_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-4 {
     background-color: #FAC24C;
     bottom: 0;
     left: 0;
     z-index: 3;
-    animation: item-4_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
-  }
-  
-  @keyframes item-1_move {
-    0%, 100% {transform: translate(0, 0)} 
-    25% {transform: translate(0, 100px)} 
-    50% {transform: translate(100px, 100px)} 
-    75% {transform: translate(100px, 0)} 
-  }
-  
-  @keyframes item-2_move {
-    0%, 100% {transform: translate(0, 0)} 
-    25% {transform: translate(-100px, 0)} 
-    50% {transform: translate(-100px, 100px)} 
-    75% {transform: translate(0, 100px)} 
-  }
-  
-  @keyframes item-3_move {
-    0%, 100% {transform: translate(0, 0)} 
-    25% {transform: translate(0, -100px)} 
-    50% {transform: translate(-100px, -100px)} 
-    75% {transform: translate(-100px, 0)} 
-  }
-  
-  @keyframes item-4_move {
-    0%, 100% {transform: translate(0, 0)} 
-    25% {transform: translate(100px, 0)} 
-    50% {transform: translate(100px, -100px)} 
-    75% {transform: translate(0, -100px)} 
-  }
+    animation: item-4_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
 
+@keyframes item-1_move {
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+    25% {
+        transform: translate(0, 100px)
+    }
+    50% {
+        transform: translate(100px, 100px)
+    }
+    75% {
+        transform: translate(100px, 0)
+    }
+}
 
+@keyframes item-2_move {
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+    25% {
+        transform: translate(-100px, 0)
+    }
+    50% {
+        transform: translate(-100px, 100px)
+    }
+    75% {
+        transform: translate(0, 100px)
+    }
+}
 
+@keyframes item-3_move {
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+    25% {
+        transform: translate(0, -100px)
+    }
+    50% {
+        transform: translate(-100px, -100px)
+    }
+    75% {
+        transform: translate(-100px, 0)
+    }
+}
+
+@keyframes item-4_move {
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+    25% {
+        transform: translate(100px, 0)
+    }
+    50% {
+        transform: translate(100px, -100px)
+    }
+    75% {
+        transform: translate(0, -100px)
+    }
+}
 
 
 /*********** RESPONSIVENESS ***********************/
 
-
-
 @media only screen and (max-width: 1550px) {
-    
-    fieldset div.col-4, fieldset div.col-6 {
+
+    fieldset div.col-4,
+    fieldset div.col-6 {
         width: 100%;
         margin-top: 5px;
     }
-    
+
     .col-2 {
         width: 50%;
     }
-
-    
 }
+
 
 @media only screen and (max-width: 900px) {
-    
+
     .card {
         width: 100%;
         margin-top: 15px;
-  
     }
-
-
-    
 }
+
 
 @media only screen and (max-width: 500px) {
-    
+
     .card {
         width: 100%;
         margin-top: 15px;
     }
-    
 }
-
 
 
 /******************     FOOTER *********************/

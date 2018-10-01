@@ -9,15 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="grid.css">
     <link rel="stylesheet" href="main.css">
-    <!-- Highcharts Library -->
-   
 </head>
 
 <body>
 
-    <nav class="main-nav">
 
-
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation">
         <div class="logo-container row">
             <a href="index.html"><img class="humdah-logo" src="https://uc.uxpin.com/files/693662/685488/image-443236.png" alt="humdah bird" ></a>
             <div class="logo-name"><a href="index.html">humdah</a></div>
@@ -25,47 +23,42 @@
                 <p class="site-description">CFPB Home Mortgage Disclosure Act Insights</p>
             </div>
         </div>
-
     </nav>
+
+
     <!-- Banner  -->
-        <div class="hmda-banner">
-            <img class="hmda-banner-img" src="images/image-70d441.png">
-        </div>
+    <div class="hmda-banner" role="banner">
+        <img class="hmda-banner-img" src="images/image-70d441.png">
+    </div>
 
+
+    <!-- Jumbotron -->
     <main class="main-content row" role="main">
-
         <h1 class="jumbo-heading">
             HMDA Mortgage Insights
         </h1>
         <div class="jumbo-content">
             <p class="jumbo-description">The HMDA, aka "HUMDAH" requires many financial institutions to maintain, report, and publicly disclose loan-level information about mortgages. Use our analyzer to gain deep insights and mortgage trends in your state.</p>
             <button class="jumbo-btn" role="button" id="home-page-btn">Discover</button>
-            <p class="hdma-disclosure">Learn more about the CFPB and the HDMA</p>
+            <p class="hdma-disclosure"><a href="https://www.consumerfinance.gov/data-research/hmda/" class="disclosure_link">Learn more about the CFPB and the HDMA</a></p>
         </div>
-
     </main>
 
- 
 
     <!-- INSIGHTS SECTION   -->
-  
     <section class="insights-container row" id="humdah-insights">
-        
 
-       
         <!--HDMA Filter Container-->
-        <!-- FORM SUBMISSION FOR FILTERS-->
-        <div class="col-3">
-            <form action="" method="get" class="hmda-form" id="hmda_form" novalidate>
+             <div class="col-3">
+            <form action="" method="get" class="hmda-form" id="hmda_form" role="form" novalidate>
 
-                 <!--STATE DATA -->
-                 <fieldset class="filter-box form-input row" id="state_list" name="stateList" >
-                        <div class="filter-title">Selected State</div>
-    
-                        <div class="selected-state col-12">
-                            <span class="select-arrow"></span>
-                            <select class="state_code">
-                                
+                <!--STATE DATA -->
+                <fieldset class="filter-box form-input row" id="state_list" name="stateList">
+                    <div class="filter-title">Selected State</div>
+
+                    <div class="selected-state col-12">
+                        <span class="select-arrow"></span>
+                        <select class="state_code">       
                                 <!-- Should be dynamic -->
                                 <option value="">-- choose state --</option>
                                 <option value="AL">Alabama</option>
@@ -126,53 +119,45 @@
                                 <option value="UM">U.S. Minor Outlying Islands</option>
                                 <option value="VI">U.S. Virgin Islands</option>
                             </select>
-                        </div>
-    
-                        <div class="county">
-                            <!--DYNAMIC LIST OF COUNTIES BASED ON STATE SELECTION-->
-                        </div>
-                    </fieldset>
-
-
-
+                    </div>
+                </fieldset>
 
 
                 <!--YEARS OF DATA -->
                 <fieldset class="filter-box form-input row" id="as_of_year" name="yearsOfData">
                     <div class="filter-title col-12">Years of Data</div>
                     <div class="row">
-                     
+
                         <div class="col-2">
                             <input class="hmda-year" type="checkbox" value="2012" name="yearsOfData" id="year2012">
-                            <label class="hmda-year-label" for="year2012">2012</label>
+                            <label class="hmda-year-label" for="year2012" tabindex="0">2012</label>
                         </div>
 
                         <div class="col-2">
                             <input class="hmda-year" type="checkbox" value="2013" name="yearsOfData" id="year2013">
-                            <label class="hmda-year-label" for="year2013">2013</label>
-                        </div>
-                        
-                        <div class="col-2">
-                            <input class="hmda-year" type="checkbox" value="2014" name="yearsOfData" id="year2014" >
-                            <label class="hmda-year-label" for="year2014">2014</label>
+                            <label class="hmda-year-label" for="year2013" tabindex="0">2013</label>
                         </div>
 
                         <div class="col-2">
-                            <input class="hmda-year" type="checkbox" value="2015" name="yearsOfData" id="year2015" >
-                            <label class="hmda-year-label" for="year2015">2015</label>
+                            <input class="hmda-year" type="checkbox" value="2014" name="yearsOfData" id="year2014">
+                            <label class="hmda-year-label" for="year2014" tabindex="0">2014</label>
                         </div>
 
                         <div class="col-2">
-                            <input class="hmda-year" type="checkbox" value="2016" name="yearsOfData" id="year2016" >
-                            <label class="hmda-year-label" for="year2016">2016</label>
+                            <input class="hmda-year" type="checkbox" value="2015" name="yearsOfData" id="year2015">
+                            <label class="hmda-year-label" for="year2015" tabindex="0">2015</label>
+                        </div>
+
+                        <div class="col-2">
+                            <input class="hmda-year" type="checkbox" value="2016" name="yearsOfData" id="year2016">
+                            <label class="hmda-year-label" for="year2016" tabindex="0">2016</label>
                         </div>
 
                         <div class="col-2">
                             <input class="hmda-year" type="checkbox" value="2017" name="yearsOfData" id="year2017" required checked>
-                            <label class="hmda-year-label" for="year2017">2017</label>
+                            <label class="hmda-year-label" for="year2017" tabindex="0">2017</label>
                         </div>
                     </div>
-
                 </fieldset>
 
                 <!--LOAN PURPOSE -->
@@ -182,85 +167,70 @@
                     <div class="row">
                         <div class="col-4">
                             <input class="hmda-purpose" type="checkbox" value="1" name="loanPurpose" id="home_purchase" checked>
-                            <label class="hmda-purpose" for="home_purchase">Purchase</label>
-                        </div>
-
-
-                        <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="2" name="loanPurpose" id="home_improvement" >
-                            <label class="hmda-purpose" for="home_improvement">Improvement</label>
+                            <label class="hmda-purpose" for="home_purchase" tabindex="0">Purchase</label>
                         </div>
 
                         <div class="col-4">
-                            <input class="hmda-purpose" type="checkbox" value="3" name="loanPurpose" id="home_refinancing" >
-                            <label class="hmda-purpose" for="home_refinancing">Refinance</label>
+                            <input class="hmda-purpose" type="checkbox" value="2" name="loanPurpose" id="home_improvement">
+                            <label class="hmda-purpose" for="home_improvement" tabindex="0">Improvement</label>
+                        </div>
+
+                        <div class="col-4">
+                            <input class="hmda-purpose" type="checkbox" value="3" name="loanPurpose" id="home_refinancing">
+                            <label class="hmda-purpose" for="home_refinancing" tabindex="0">Refinance</label>
                         </div>
                     </div>
                 </fieldset>
-           
-    
 
                 <button role="submit" type="submit" class="filter-btn">Update </button>
 
             </form>
-
         </div>
 
         <!-- ******************************** 
 
                     HMDA METRICS SECTION 
 
-
             **************************************-->
-            <div class="spinner-title">
-            </div>
-            
-            <div class="spinner">
-                    <div class="item item-1"></div>
-                    <div class="item item-2"></div>
-                    <div class="item item-3"></div>
-                    <div class="item item-4"></div>
-                    
-            </div>
+
+        <div class="spinner-title" role="alertdialog">
+        </div>
+
+        <div class="spinner" aria-live="polite">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+            <div class="item item-4"></div>
+        </div>
 
         <div class="hmda-data-container col-9">
 
             <div class="hmda-kpi-metrics row">
-
                 <div class="card col-4">
                     <div class="card-title">Loans Originated</div>
-
                     <div class="card-kpi row">
                         <div class="main-kpi col-12">
                             <div class="main-kpi-value" id="originated_value">$33.5M</div>
                             <div class="main-kpi-title">Loan Origination Value</div>
-                                                    
                         </div>
                     </div>
 
                     <div class="card-kpi row">
-
                         <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-
-                                <div class="sub-kpi">
+                                <div class="sub-kpi" aria-live="assertive">
                                     <div class="sub-kpi-value" id="originated_count">225k</div>
                                     <div class="sub-kpi-title"># of Loans Originated</div>
                                     <div class="sub-kpi-types">
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        
-                        
-                         <div class="sub-kpis col-6">
+
+
+                        <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-
-                                <div class="sub-kpi">
+                                <div class="sub-kpi" aria-live="assertive">
                                     <div class="sub-kpi-value" id="avg_loan_value">$225k</div>
                                     <div class="sub-kpi-title">Avg Loan Value</div>
                                     <div class="sub-kpi-types">
@@ -269,28 +239,23 @@
 
                             </div>
                         </div>
-
                     </div>
-
                 </div>
 
-                 <div class="card col-4">
+                <div class="card col-4">
                     <div class="card-title">Loans Denied</div>
 
                     <div class="card-kpi row">
-                        <div class="main-kpi col-12">
+                        <div class="main-kpi col-12" aria-live="assertive">
                             <div class="main-kpi-value" id="denied_value">$33.5M</div>
                             <div class="main-kpi-title">Value of Loans Denied</div>
-                                                       
                         </div>
                     </div>
 
                     <div class="card-kpi row">
-
                         <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-                                <div class="sub-kpi">
+                                <div class="sub-kpi" aria-live="assertive">
                                     <div class="sub-kpi-value" id="denied_count">3.8M</div>
                                     <div class="sub-kpi-title"># of Loans Denied</div>
                                     <div class="sub-kpi-types">
@@ -299,78 +264,52 @@
 
                             </div>
                         </div>
-                        
-                        
-                         <div class="sub-kpis col-6">
+
+                        <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-
                                 <div class="sub-kpi">
                                     <div class="sub-kpi-value" id="loan_withdrawn">$1.2M</div>
                                     <div class="sub-kpi-title">Applicant Withdrew</div>
-                                
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-                
-                 <div class="card col-4">
-                    <div class="card-title">Key Insights</div>
 
+                <div class="card col-4">
+                    <div class="card-title">Key Insights</div>
                     <div class="card-kpi row">
                         <div class="main-kpi col-12">
                             <div class="main-kpi-value" id="percent_denied">55%</div>
                             <div class="main-kpi-title">Percent Denied</div>
-                            
-                            
                         </div>
                     </div>
 
                     <div class="card-kpi row">
-
                         <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-
                                 <div class="sub-kpi">
                                     <div class="sub-kpi-value" id="loan_growth">22%</div>
                                     <div class="sub-kpi-title">5 Year Purchase Growth</div>
-                                   
                                 </div>
-
                             </div>
                         </div>
-                        
-                        
-                         <div class="sub-kpis col-6">
+
+                        <div class="sub-kpis col-6">
                             <div class="kpi-title">
-
-
                                 <div class="sub-kpi">
                                     <div class="sub-kpi-value" id="purchase_percent">54%</div>
                                     <div class="sub-kpi-title">Purchase Loans vs Others</div>
-                              
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-               
             </div>
 
             <div class="hmda-kpi-chart col-12" id="container"></div>
-          
 
         </div>
-
-
     </section>
 
 
@@ -390,6 +329,5 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="charts.js"></script>
 
 </body>
