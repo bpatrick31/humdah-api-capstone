@@ -1,5 +1,3 @@
-//Need to add the enter event listener
-//Need the home button to be clickable to refresh the page
 //Need to clear the checked value from the loan purpose once the state changes
 
 //Application State Variables
@@ -345,7 +343,7 @@ function filterResults(mortgageData, years, loanPurpose) {
           
           
 }
-
+    
 //2. GET THE INSIGHT VALUES ****************************
 
 

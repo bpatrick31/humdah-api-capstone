@@ -43,7 +43,19 @@ option {
     text-align: center;
     vertical-align: top;
     margin-top: 20px;
+    color: #ccc;
+    
 }
+
+
+a {
+     text-decoration: none;
+}
+
+
+
+
+
 
 .right-nav {
     
