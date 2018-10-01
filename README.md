@@ -1,5 +1,5 @@
 # humdah-api-capstone
-Thinkful API Capstone Project analyzing HMDA Data
+Thinkful (https://www.thinkful.com/) API Capstone Project analyzing HMDA Data
 
 Link to the live demo: https://bpatrick31.github.io/humdah-api-capstone/index.html
 
@@ -13,12 +13,12 @@ Screen Shots
 ![screen shot 2018-09-30 at 5 32 57 pm](https://user-images.githubusercontent.com/19401140/46265074-3ff80900-c4d8-11e8-9a6b-8f116ed753bb.png)
 ![screen shot 2018-09-30 at 5 33 19 pm](https://user-images.githubusercontent.com/19401140/46265073-3ff80900-c4d8-11e8-88fd-fe6c6d9396ac.png)
 
+Link to initial wireframes: (https://preview.uxpin.com/b1035e8d4b48bd89dfa15d55a930e87fdace14bb#/pages/92799202/simulate/no-panels?mode=i). These wireframes also outline future dev ideas.
 
 Technology Used:
-1) Languages:
-      HTML, CSS, JS, Jquery
+1) Languages: (HTML, CSS, JS, Jquery)
       
-2) API's
+2) API's & Datachar Library
     HMDA Database (CFPB) API: http://cfpb.github.io/api/hmda/index.html
     Highcharts: https://www.highcharts.com/demo/areaspline
     
