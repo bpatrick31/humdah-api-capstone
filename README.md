@@ -22,6 +22,11 @@ Technology Used:
     HMDA Database (CFPB) API: http://cfpb.github.io/api/hmda/index.html
     Highcharts: https://www.highcharts.com/demo/areaspline
     
-    
+
+#Future Dev Ideas
+1) Add in additional insights on the loan denial reason
+2) Allow the user to drill down to the county level of the loan processing data
+3) Add in an geomap of the united states showing the states that have the most growth available
+
     
 
