@@ -316,7 +316,7 @@ function hmdaChartData(data) {
 // FILTER THE FORM SUBMISSION AND RETURN A REDUCED VALUE
 
 function filterResults(mortgageData, years, loanPurpose) {
-    
+
     //create a new array from the API results based on the selected form values
     let filteredArray = mortgageData.results.filter((item) => {
         //Check for the years selected and then convert the year to a string
@@ -367,7 +367,7 @@ function loanOriginationKPI(array) {
 
 //Update the Loans Denied KPI
 function loansDeniedKPI(array) {
-    
+
     let loanDeniedValue = array
         .filter((items) => {
             return items.action_taken_name === "Preapproval request denied by financial institution", "File closed for incompleteness";
